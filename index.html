@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Register - CRUD</title>
-    <link href="style.css" rel="stylesheet"> 
+    <link href="css/style.css" rel="stylesheet"> 
+    <link href="css/modal.css" rel="stylesheet">
 </head>
 <body>
     <header>Client Register</header>
@@ -60,6 +61,24 @@
                 </tr>
             </tbody>
             </table>
+        </div>
+        <div class="modal">
+            <div class="modalContent">
+                <header>
+                    <h2>New Client</h2>
+                    <span class="modalClose">&#10006</span>
+                </header>
+                <form>
+                    <input type="text" class="modalField" placeholder="Client Name">
+                    <input type="email" class="modalField" placeholder="E-mail">
+                    <input type="number" class="modalField" placeholder="Phone number">
+                    <input type="text" class="modalField" placeholder="City">
+                </form>
+                <footer class="modalFooter">
+                    <button class="greenBtn">Save</button>
+                    <button class="blueBtn">Cancel</button>
+                </footer>
+            </div>
         </div>
     </div>
     <footer>
