@@ -22,6 +22,11 @@ header{
     margin-bottom: 50px;
 }
 
+header::selection{
+    color:#0d1117;
+    background: white;
+}
+
 .mainSection{
     width: 100px;
     height: 100px;
@@ -44,15 +49,31 @@ header{
     margin-top: 50px;
     margin-left: 45px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 1s;
+    font-weight: bold;
+}
+
+.registerClientBtn::selection{
+    background: #0d1117;
+    color: white;
 }
 
 .registerClientBtn:hover{
-    letter-spacing: 0.3px;
+    background-color: white;
+    color: #0d1117;
 }
 
 .tableData{
     color: white;
+    padding: 15px;
+}
+
+.dataRow{
+    transition: 0.5s;
+}
+
+.dataRow:hover{
+    background-color: #0d111780;
 }
 
 .tableHead{
@@ -62,8 +83,73 @@ header{
     width: 10%;
 }
 
+.tableHead::selection{
+    color:#0d1117;
+    background: white;
+}
+
 .tableDiv{
     margin-left: 45px;
     margin-right: 45px;
     margin-top: 17px;
+}
+
+.editBtn, .deleteBtn{
+    border: none;
+    background-color: #0d1117;
+    color: white;
+    border-radius: 5px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.editBtn:hover{
+    background-color: rgba(0, 128, 0, 0.288);
+}
+
+.deleteBtn::selection{
+    color:#0d1117;
+    background: white;
+}
+
+.editBtn::selection{
+    color:#0d1117;
+    background: white;
+}
+
+td::selection{
+    color:#0d1117;
+    background: white;
+}
+
+.deleteBtn:hover{
+    background-color: rgba(255, 0, 0, 0.288);
+}
+
+footer{
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer::selection{
+    color:#0d1117;
+    background-color: white;
+}
+
+.githubLink{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.githubLink::selection{
+    color:#0d1117;
+    background: white;
 }
