@@ -1,0 +1,69 @@
+@import url('http://fonts.cdnfonts.com/css/product-sans');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Product Sans', sans-serif;
+}
+
+body{
+    background-color: #1e2531;
+    height: 975px;
+}
+
+header{
+    background-color: #0d1117;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 35px;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.mainSection{
+    width: 100px;
+    height: 100px;
+    background-color: #1e2531;
+    margin: auto;
+    width: 75%;
+    height: 75%;
+    -webkit-box-shadow: 1px -2px 22px 5px rgba(0,0,0,0.69);
+    -moz-box-shadow: 1px -2px 22px 5px rgba(0,0,0,0.69);
+    box-shadow: 1px -2px 22px 5px rgba(0,0,0,0.69);
+}
+
+.registerClientBtn{
+    padding: 20px;
+    border: none;
+    background-color: #0d1117;
+    color: white;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 50px;
+    margin-left: 45px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.registerClientBtn:hover{
+    letter-spacing: 0.3px;
+}
+
+.tableData{
+    color: white;
+}
+
+.tableHead{
+    color: white;
+    background-color: #0d1117;
+    padding: 15px;
+    width: 10%;
+}
+
+.tableDiv{
+    margin-left: 45px;
+    margin-right: 45px;
+    margin-top: 17px;
+}

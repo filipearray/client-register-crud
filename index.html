@@ -5,10 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Register - CRUD</title>
+    <link href="style.css" rel="stylesheet"> 
 </head>
 <body>
+    <header>Client Register</header>
+
+    <div class="mainSection">
+        <button class="registerClientBtn" type="button">Register new client</button>
+
+        <div class="tableDiv">
+            <table>
+                <thead align="left">
+                <tr>
+                    <th class="tableHead">Name</th>
+                    <th class="tableHead">E-mail</th>
+                    <th class="tableHead">Phone number</th>
+                    <th class="tableHead">City</th>
+                    <th class="tableHead">Action</th>
+                </tr>
+            </thead>
+
+                <tr>
+                    <td class="tableData">Kaminase</td>
+                    <td class="tableData">kaminase@gmail.com</td>
+                    <td class="tableData">(77) 90297-0192</td>
+                    <td class="tableData">Melbourne</td>
+                    <td>
+                        <button type="button" class="editBtn">edit</button>
+                        <button type="button" class="deleteBtn">delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="tableData">Yohan Kirsch</td>
+                    <td class="tableData">yohankirsch@gmail.com</td>
+                    <td class="tableData">(77) 90297-1137</td>
+                    <td class="tableData">Illenium</td>
+                    <td>
+                        <button type="button" class="editBtn">edit</button>
+                        <button type="button" class="deleteBtn">delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="tableData">Ruther Mark</td>
+                    <td class="tableData">ruthermark@gmail.com</td>
+                    <td class="tableData">(77) 90297-8841</td>
+                    <td class="tableData">Munich</td>
+                    <td>
+                        <button type="button" class="editBtn">edit</button>
+                        <button type="button" class="deleteBtn">delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
     
     <script src="script.js"></script>
-
 </body>
 </html>
