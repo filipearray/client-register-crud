@@ -6,15 +6,101 @@
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.486);
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal.active{
+    opacity: 1;
+    z-index: 1;
 }
 
 .modalContent{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 50vw;
+    width: 30vw;
     margin: 15vh auto;
     background-color: white;
     padding-bottom: 20px;
     box-shadow: 1px 1px 10px black;
+}
+
+.modalForm{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.modalFooter{
+    background-color: inherit;
+    text-align: right;
+    padding: 0 20px;
+}
+
+.modalClose{
+    width: 35px;
+    height: 42px;
+    text-align: center;
+    display: block;
+    background-color: #0d1117;
+    border-width: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 30px;
+}
+
+.modalClose:hover{
+    background-color: white;
+    color: #0d1117;
+}
+
+.modalHeader{
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+}
+
+.modalHeader > h2 {
+    width: 100;
+    margin: 0 auto;
+}
+
+.modalField{
+    height: 40px;
+    outline-style: none;
+    border-style: none;
+    box-shadow: 0 0 2px black;
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+.modalField:focus{
+    border: 2px solid #0d1117;
+    box-shadow: 0 0 3px #0d1117;
+}
+
+.greenBtn, .blueBtn{
+    border: none;
+    background-color: #0d1117;
+    color: white;
+    border-radius: 5px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.greenBtn:hover{
+    background-color: rgba(0, 128, 0, 0.651);
+}
+
+.blueBtn:hover{
+    background-color: rgba(255, 0, 0, 0.651);
 }

@@ -9,10 +9,12 @@
     <link href="css/modal.css" rel="stylesheet">
 </head>
 <body>
-    <header>Client Register</header>
+    <header>
+        <h1 class="headerTitle">Client Register</h1>
+    </header>
 
     <div class="mainSection">
-        <button class="registerClientBtn" type="button">Register new client</button>
+        <button class="registerClientBtn" type="button" id="registerNewClient">Register new client</button>
 
         <div class="tableDiv">
             <table>
@@ -62,13 +64,13 @@
             </tbody>
             </table>
         </div>
-        <div class="modal">
+        <div class="modal" id="modal">
             <div class="modalContent">
-                <header>
+                <header class="modalHeader">
                     <h2>New Client</h2>
-                    <span class="modalClose">&#10006</span>
+                    <span class="modalClose" id="modalClose">&#10006</span>
                 </header>
-                <form>
+                <form class="modalForm">
                     <input type="text" class="modalField" placeholder="Client Name">
                     <input type="email" class="modalField" placeholder="E-mail">
                     <input type="number" class="modalField" placeholder="Phone number">
