@@ -50,6 +50,7 @@ const saveClient = () => {
             city: document.getElementById("clientCity").value
         };
         createClient(fieldCreatedClient);
+        updateTable(); // Um updateTable foi colocado aqui também. Pra evitar bugs, sempre vamos atualizar a tabela ao criarmos um cliente.
         closeModal();
     }
 };
@@ -70,11 +71,18 @@ const createRow = (client) => {
         </td>
     `
     document.querySelector("#tableClient > tbody").appendChild(newRow);
-// appendChild cria um filho no HTML.
+// appendChild cria um filho no HTML. 
 }
 
-const updateTable = () => { // Essa func tem que ler os dados do local storage e preencher no painel.
+const clearTable = () => {
+    const rows = document.querySelectorAll("#tableClient > tbody tr")
+    rows.forEach(row => row.parentElement.removeChild(row))
+} 
+
+const updateTable = () => { // Essa func tem que ler os dados do local storage e preencher no painel. Mas temos um problema, toda vez que dermos updateTable(), ele vai criar as mesmas rows várias vezes, e isso não pode acontecer. O que já está na tabela vai acabar se repetindo e isso não pode acontecer, então o que vai acontecer é o seguinte, vamos criar uma função chamada: clearTable(), assim sempre quando nós atualizarmos a tabela, ele vai limpar antes de atualizar.
     const dbClientTableToUpdate = readClient();
+
+    clearTable();
 
     dbClientTableToUpdate.forEach(createRow)
 }
