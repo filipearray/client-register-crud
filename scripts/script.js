@@ -34,10 +34,6 @@ const deleteClient = (index) => {
 
 // Layout interaction
 
-// Step 1 - Vamos começar criando a feature em que nós clicamos em salvar e as informações são salvas na database. Precisamos primeiro nos certificar de que todos os campos serão salvos (Isso será verificado na func isValidFields).
-
-// o reportValidity retorna true ou false. Verifica se as regras são seguidas, se todos os requisitos foram atendidos.
-
 const saveButton = document.getElementById("saveBtn");
 
 const isValidFields = () => {
@@ -47,10 +43,16 @@ const isValidFields = () => {
     return form.reportValidity();
 }
 
+const clearFields = () => {
+
+    const fields = document.querySelectorAll(".modalField");
+
+    fields.forEach(field => field.value = "")
+
+} // Essa é a função que proporciona a feature. Ela também foi colocada no modal.js, veja o comentário de lá.
+
 const saveClient = () => {
 
-    // Quando apertarmos em Salvar, precisamos que a função pegue os dados nos campos e transforme-os em JSON.
-    
     if(isValidFields()){
         const fieldCreatedClient = {
             name: document.getElementById("clientName").value,
@@ -58,7 +60,11 @@ const saveClient = () => {
             phone: document.getElementById("clientPhoneNumber").value,
             city: document.getElementById("clientCity").value
         };
-        createClient(fieldCreatedClient)
+        createClient(fieldCreatedClient);
+
+        // Feature pra limpar campos após o cadastro:
+
+        closeModal();
     }
 };
 
