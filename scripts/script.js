@@ -57,7 +57,7 @@ const saveClient = () => {
 
 saveButton.addEventListener("click", saveClient)
 
-const createRow = (client) => {
+const createRow = (client, index) => {
     const newRow = document.createElement("tr");
 
     newRow.innerHTML = `
@@ -66,8 +66,8 @@ const createRow = (client) => {
         <td>${client.phone}</td>
         <td>${client.city}</td>
         <td>
-                        <button type="button" class="editBtn" data-action="edit">edit</button>
-                        <button type="button" class="deleteBtn" data-action="delete">delete</button>
+                        <button type="button" class="editBtn" id="edit-${index}">edit</button>
+                        <button type="button" class="deleteBtn" id="delete-${index}">delete</button>
         </td>
     ` // Veja que acima colocamos data-action
     document.querySelector("#tableClient > tbody").appendChild(newRow);
@@ -88,12 +88,13 @@ const updateTable = () => {
 
 const editDelete = (event) => {
         if(event.target.type == "button"){
-            console.log(event.target.dataset.action); 
+            console.log(event.target.id); 
         }
     // O target.type pega o tipo do que está sendo clicado, então quando clicarmos nos botões, ele vai retornar type="button"; (button)
     // Agora precisamos diferenciar o botão de editar e de deletar, para fazer isso vamos criar um atributo personalizado, esse atributos são passíveis de captura no JS. Colocando no elemento "data-(o nome do atributo)"
     // dataset é a prop pra pegar essas classes
     // Outra forma mais fácil de fazer isso é usando apenas um id, e vamos fazer isso.
+    // Agora de quem é esse edit, ou esse delete? Colocando um param index.
 }
 
 document.querySelector("#tableClient > tbody")
