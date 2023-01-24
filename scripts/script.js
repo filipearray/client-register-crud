@@ -50,7 +50,7 @@ const saveClient = () => {
             city: document.getElementById("clientCity").value
         };
         createClient(fieldCreatedClient);
-        updateTable(); // Um updateTable foi colocado aqui também. Pra evitar bugs, sempre vamos atualizar a tabela ao criarmos um cliente.
+        updateTable();
         closeModal();
     }
 };
@@ -66,12 +66,11 @@ const createRow = (client) => {
         <td>${client.phone}</td>
         <td>${client.city}</td>
         <td>
-                        <button type="button" class="editBtn">edit</button>
-                        <button type="button" class="deleteBtn">delete</button>
+                        <button type="button" class="editBtn" data-action="edit">edit</button>
+                        <button type="button" class="deleteBtn" data-action="delete">delete</button>
         </td>
-    `
+    ` // Veja que acima colocamos data-action
     document.querySelector("#tableClient > tbody").appendChild(newRow);
-// appendChild cria um filho no HTML. 
 }
 
 const clearTable = () => {
@@ -79,12 +78,25 @@ const clearTable = () => {
     rows.forEach(row => row.parentElement.removeChild(row))
 } 
 
-const updateTable = () => { // Essa func tem que ler os dados do local storage e preencher no painel. Mas temos um problema, toda vez que dermos updateTable(), ele vai criar as mesmas rows várias vezes, e isso não pode acontecer. O que já está na tabela vai acabar se repetindo e isso não pode acontecer, então o que vai acontecer é o seguinte, vamos criar uma função chamada: clearTable(), assim sempre quando nós atualizarmos a tabela, ele vai limpar antes de atualizar.
+const updateTable = () => {
     const dbClientTableToUpdate = readClient();
 
     clearTable();
 
-    dbClientTableToUpdate.forEach(createRow)
+    dbClientTableToUpdate.forEach(createRow);
 }
+
+const editDelete = (event) => {
+        if(event.target.type == "button"){
+            console.log(event.target.dataset.action); 
+        }
+    // O target.type pega o tipo do que está sendo clicado, então quando clicarmos nos botões, ele vai retornar type="button"; (button)
+    // Agora precisamos diferenciar o botão de editar e de deletar, para fazer isso vamos criar um atributo personalizado, esse atributos são passíveis de captura no JS. Colocando no elemento "data-(o nome do atributo)"
+    // dataset é a prop pra pegar essas classes
+    // Outra forma mais fácil de fazer isso é usando apenas um id, e vamos fazer isso.
+}
+
+document.querySelector("#tableClient > tbody")
+    .addEventListener("click", editDelete);
 
 updateTable();
