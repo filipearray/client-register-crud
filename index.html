@@ -70,15 +70,15 @@
                     <h2 class="modalH2">New Client</h2>
                     <span class="modalClose" id="modalClose">&#10006</span>
                 </header>
-                <form class="modalForm">
-                    <input type="text" class="modalField" placeholder="Client Name">
-                    <input type="email" class="modalField" placeholder="E-mail">
-                    <input type="number" class="modalField" placeholder="Phone number">
-                    <input type="text" class="modalField" placeholder="City">
+                <form id="idForm" class="modalForm">
+                    <input type="text" class="modalField" placeholder="Client Name" required>
+                    <input type="email" class="modalField" placeholder="E-mail" required>
+                    <input type="number" class="modalField" placeholder="Phone number" required>
+                    <input type="text" class="modalField" placeholder="City" required>
                 </form>
                 <footer class="modalFooter">
-                    <button class="greenBtn">Save</button>
-                    <button class="blueBtn">Cancel</button>
+                    <button class="greenBtn" id="saveBtn">Save</button>
+                    <button class="blueBtn" id="cancelBtn">Cancel</button>
                 </footer>
             </div>
         </div>
