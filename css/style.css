@@ -65,16 +65,13 @@ header{
     color: #0d1117;
 }
 
-.tableData{
+td{
     color: white;
-    padding: 15px;
-}
-
-.dataRow{
+    padding: 4px;
     transition: 0.5s;
 }
 
-.dataRow:hover{
+td:hover{
     background-color: #0d111780;
 }
 

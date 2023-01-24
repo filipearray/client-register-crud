@@ -1,10 +1,3 @@
-const tempClient = {
-    nome: "Filipe",
-    email: "filipeguimaraes@gmail.com",
-    celular: "990297113",
-    cidade: "Santa City"
-};
-
 const getLocalStorage = () => JSON.parse(localStorage.getItem("db_client")) ?? [];
 const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient));
 
@@ -37,22 +30,18 @@ const deleteClient = (index) => {
 const saveButton = document.getElementById("saveBtn");
 
 const isValidFields = () => {
-
     const form = document.getElementById("idForm");
 
     return form.reportValidity();
 }
 
 const clearFields = () => {
-
     const fields = document.querySelectorAll(".modalField");
 
     fields.forEach(field => field.value = "")
-
-} // Essa é a função que proporciona a feature. Ela também foi colocada no modal.js, veja o comentário de lá.
+}
 
 const saveClient = () => {
-
     if(isValidFields()){
         const fieldCreatedClient = {
             name: document.getElementById("clientName").value,
@@ -61,11 +50,33 @@ const saveClient = () => {
             city: document.getElementById("clientCity").value
         };
         createClient(fieldCreatedClient);
-
-        // Feature pra limpar campos após o cadastro:
-
         closeModal();
     }
 };
 
 saveButton.addEventListener("click", saveClient)
+
+const createRow = (client) => {
+    const newRow = document.createElement("tr");
+
+    newRow.innerHTML = `
+        <td>${client.name}</td>
+        <td>${client.email}</td>
+        <td>${client.phone}</td>
+        <td>${client.city}</td>
+        <td>
+                        <button type="button" class="editBtn">edit</button>
+                        <button type="button" class="deleteBtn">delete</button>
+        </td>
+    `
+    document.querySelector("#tableClient > tbody").appendChild(newRow);
+// appendChild cria um filho no HTML.
+}
+
+const updateTable = () => { // Essa func tem que ler os dados do local storage e preencher no painel.
+    const dbClientTableToUpdate = readClient();
+
+    dbClientTableToUpdate.forEach(createRow)
+}
+
+updateTable();
