@@ -86,9 +86,30 @@ const updateTable = () => {
     dbClientTableToUpdate.forEach(createRow);
 }
 
+const fillFields = (client) => {
+    document.getElementById("clientName").value = client.name;
+    document.getElementById("clientEmail").value = client.email;
+    document.getElementById("clientPhoneNumber").value = client.phone;
+    document.getElementById("clientCity").value = client.city;
+}
+
+const editClient = (index) => {
+    const editedClient = readClient()[index];
+
+    fillFields(editedClient);
+
+    openModal();
+}
+
 const editDelete = (event) => {
         if(event.target.type == "button"){
-            console.log(event.target.id); 
+            const [action, index] = event.target.id.split("-") // Pesquise sobre o split e ficará fácil de entendê-lo. O - é o por causa do edit-index e do delete-index.
+
+            if (action == "edit"){
+                editClient(index)
+            } else {
+                // deleteClient(index)
+            }
         }
     // O target.type pega o tipo do que está sendo clicado, então quando clicarmos nos botões, ele vai retornar type="button"; (button)
     // Agora precisamos diferenciar o botão de editar e de deletar, para fazer isso vamos criar um atributo personalizado, esse atributos são passíveis de captura no JS. Colocando no elemento "data-(o nome do atributo)"
