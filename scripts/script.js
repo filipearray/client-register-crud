@@ -49,9 +49,18 @@ const saveClient = () => {
             phone: document.getElementById("clientPhoneNumber").value,
             city: document.getElementById("clientCity").value
         };
-        createClient(fieldCreatedClient);
-        updateTable();
-        closeModal();
+
+        const indexInput = document.getElementById("clientName").dataset.index
+
+        if(indexInput == "new") {
+            createClient(fieldCreatedClient);
+            updateTable();
+            closeModal();
+        } else {
+            updateClient(index, client)
+            updateTable()
+            closeModal()
+        }
     }
 };
 
@@ -69,7 +78,7 @@ const createRow = (client, index) => {
                         <button type="button" class="editBtn" id="edit-${index}">edit</button>
                         <button type="button" class="deleteBtn" id="delete-${index}">delete</button>
         </td>
-    ` // Veja que acima colocamos data-action
+    `
     document.querySelector("#tableClient > tbody").appendChild(newRow);
 }
 
@@ -91,10 +100,13 @@ const fillFields = (client) => {
     document.getElementById("clientEmail").value = client.email;
     document.getElementById("clientPhoneNumber").value = client.phone;
     document.getElementById("clientCity").value = client.city;
+    document.getElementById("clientName").dataset.index = client.index;
 }
 
 const editClient = (index) => {
     const editedClient = readClient()[index];
+
+    editedClient.index = index;
 
     fillFields(editedClient);
 
@@ -103,22 +115,27 @@ const editClient = (index) => {
 
 const editDelete = (event) => {
         if(event.target.type == "button"){
-            const [action, index] = event.target.id.split("-") // Pesquise sobre o split e ficará fácil de entendê-lo. O - é o por causa do edit-index e do delete-index.
+            const [action, index] = event.target.id.split("-")
 
             if (action == "edit"){
                 editClient(index)
             } else {
-                // deleteClient(index)
+                console.log("Deleting...")
             }
         }
-    // O target.type pega o tipo do que está sendo clicado, então quando clicarmos nos botões, ele vai retornar type="button"; (button)
-    // Agora precisamos diferenciar o botão de editar e de deletar, para fazer isso vamos criar um atributo personalizado, esse atributos são passíveis de captura no JS. Colocando no elemento "data-(o nome do atributo)"
-    // dataset é a prop pra pegar essas classes
-    // Outra forma mais fácil de fazer isso é usando apenas um id, e vamos fazer isso.
-    // Agora de quem é esse edit, ou esse delete? Colocando um param index.
 }
 
 document.querySelector("#tableClient > tbody")
     .addEventListener("click", editDelete);
 
 updateTable();
+
+// Ainda há um problema, quando nós salvamos um cliente no edit sem fazer nenhuma alteração, ele salva um novo cliente, o que não deveria acontecer, vamos fazer o seguinte: Criar um atributo especial no HTML.
+
+/*
+
+    delete client () {
+        updatetable() com confirm
+    }
+
+*/
